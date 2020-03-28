@@ -15,7 +15,13 @@ spec:
          app: httpd-app 
      spec:
        containers:
-        - name: httpd 
+        - name: httpd-c 
           image: httpd:2.4
           ports: 
           - containerPort: 80
+          livenessProbe: 
+            httpGet:
+             path: /
+             port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 60
